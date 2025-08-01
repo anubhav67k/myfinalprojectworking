@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 
 const domains = [
   { key: 'retail', label: 'Retail' },
-  { key: 'insurance', label: 'Insurance' }
+  { key: 'insurance', label: 'Insurance' },
+  { key: 'test', label: 'Test' }
 ];
 
 const DomainSidebar = ({ selectedDomain, onSelect }) => {
