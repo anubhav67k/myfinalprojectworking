@@ -4,6 +4,7 @@ import AgentNetwork from './components/AgentNetwork';
 import ScenarioInput from './components/ScenarioInput';
 import AgentLogs from './components/AgentLogs';
 import DomainSidebar from './components/DomainSidebar';
+import TestAgentChat from './components/TestAgentChat';
 import axios from 'axios';
 
 function App() {
@@ -297,21 +298,27 @@ const retailDemoScenarios = {
             backdropFilter: 'blur(8px)',
             transition: 'box-shadow 0.3s',
           }}>
-            <div style={{ background: 'rgba(24,28,32,0.97)', padding: 22, borderRadius: 14, marginBottom: 30, boxShadow: '0 2px 12px #0003', display: 'flex', alignItems: 'center', gap: 16 }}>
-              <ScenarioInput onSubmit={handleScenarioSubmit} domain={selectedDomain} />
-            </div>
-            {scenario && (
-              <div style={{ marginBottom: 26, background: 'rgba(33,38,43,0.98)', padding: 16, borderRadius: 10, color: '#90caf9', fontSize: 17, fontWeight: 500, letterSpacing: 0.2, boxShadow: '0 2px 8px #0002' }}>
-                <strong style={{ color: '#b6e41c', fontWeight: 800, fontSize: 18 }}>Scenario:</strong> {scenario}
+            {selectedDomain === 'test' ? (
+              <TestAgentChat />
+            ) : (
+              <div>
+                <div style={{ background: 'rgba(24,28,32,0.97)', padding: 22, borderRadius: 14, marginBottom: 30, boxShadow: '0 2px 12px #0003', display: 'flex', alignItems: 'center', gap: 16 }}>
+                  <ScenarioInput onSubmit={handleScenarioSubmit} domain={selectedDomain} />
+                </div>
+                {scenario && (
+                  <div style={{ marginBottom: 26, background: 'rgba(33,38,43,0.98)', padding: 16, borderRadius: 10, color: '#90caf9', fontSize: 17, fontWeight: 500, letterSpacing: 0.2, boxShadow: '0 2px 8px #0002' }}>
+                    <strong style={{ color: '#b6e41c', fontWeight: 800, fontSize: 18 }}>Scenario:</strong> {scenario}
+                  </div>
+                )}
+                <div style={{ marginBottom: 28 }}>
+                  <AgentLogs logs={logs} />
+                </div>
+                {loading && <div style={{ color: '#90caf9', marginBottom: 18, fontSize: 18, textAlign: 'center', letterSpacing: 0.2, fontWeight: 600, animation: 'pulse 1.5s infinite' }}>Loading agent actions...</div>}
+                <div style={{ marginTop: 18 }}>
+                  <AgentNetwork scenario={scenario} domain={selectedDomain} />
+                </div>
               </div>
             )}
-            <div style={{ marginBottom: 28 }}>
-              <AgentLogs logs={logs} />
-            </div>
-            {loading && <div style={{ color: '#90caf9', marginBottom: 18, fontSize: 18, textAlign: 'center', letterSpacing: 0.2, fontWeight: 600, animation: 'pulse 1.5s infinite' }}>Loading agent actions...</div>}
-            <div style={{ marginTop: 18 }}>
-              <AgentNetwork scenario={scenario} domain={selectedDomain} />
-            </div>
           </div>
           {/* Footer */}
           <footer style={{ textAlign: 'center', marginTop: 48, color: '#ffe08299', fontSize: 15, letterSpacing: 0.3 }}>
