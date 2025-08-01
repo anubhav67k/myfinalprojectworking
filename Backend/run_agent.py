@@ -4,9 +4,9 @@ from azure.ai.agents.models import ListSortOrder
 
 project = AIProjectClient(
     credential=DefaultAzureCredential(),
-    endpoint="https://anubhavkaushik67-5742-resource.services.ai.azure.com/api/projects/anubhavkaushik67-5742")
+    endpoint="https://anubhavkaushik67-1809-resource.services.ai.azure.com/api/projects/anubhavkaushik67-1809")
 
-agent = project.agents.get_agent("asst_kGYi031iXFwW5DRUuK2e3y7s")
+agent = project.agents.get_agent("asst_Awnyo1OAaoVIZ067KhKe5Yyb")
 
 thread = project.agents.threads.create()
 print(f"Created thread, ID: {thread.id}")
