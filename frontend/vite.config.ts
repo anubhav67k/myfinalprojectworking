@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/agent': 'http://localhost:8000',
-      '/scenario': 'http://localhost:8000',
-      '/chat': 'http://localhost:8000',
+      '/agent': 'https://psychic-fish-xxxxxx-8000.app.github.dev',
+      '/scenario': 'https://psychic-fish-xxxxxx-8000.app.github.dev',
+      '/chat': 'https://psychic-fish-xxxxxx-8000.app.github.dev',
     },
   },
 })
