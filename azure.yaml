@@ -15,6 +15,36 @@ services:
     build:
       requirements: requirements.txt
     env_file: .env
+    ingress:
+      target_port: 8000
+      external: true
+
+  frontend:
+    project: ./frontend
+    language: js
+    host: appservice
+    docker:
+      context: ./frontend
+    build:
+      app: npm install && npm run build
+    env_file: .env
+    ingress:
+      target_port: 80
+      external: true
+ azuredev-b20b-multiagent
+metadata:
+  template: custom
+
+services:
+  backend:
+    project: ./Backend
+    language: python
+    host: appservice
+    docker:
+      context: ./Backend
+    build:
+      requirements: requirements.txt
+    env_file: .env
     # Expose FastAPI on port 8000
     ingress:
       target_port: 8000
