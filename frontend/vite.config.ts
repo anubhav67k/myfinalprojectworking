@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '/agent': 'https:psychic-fishstick-5gpq954vgpjh44gr-8000.app.github.dev',
+      '/agent': 'https://psychic-fishstick-5gpq954vgpjh44gr-8000.app.github.dev',
       '/scenario': 'https://psychic-fishstick-5gpq954vgpjh44gr-8000.app.github.dev',
       '/chat': 'https://psychic-fishstick-5gpq954vgpjh44gr-8000.app.github.dev',
     },
