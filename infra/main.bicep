@@ -15,14 +15,16 @@ resource backendPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 resource backendApp 'Microsoft.Web/sites@2022-03-01' = {
   name: 'backend-app-${uniqueString(resourceGroup().id)}'
   location: resourceGroup().location
-  serverFarmId: backendPlan.id
   tags: {
     'azd-service-name': 'backend'
   }
-  siteConfig: {
-    linuxFxVersion: 'PYTHON|3.11'
+  properties: {
+    serverFarmId: backendPlan.id
+    siteConfig: {
+      linuxFxVersion: 'PYTHON|3.11'
+    }
+    httpsOnly: true
   }
-  httpsOnly: true
 }
 
 resource frontendPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
@@ -37,12 +39,14 @@ resource frontendPlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 resource frontendApp 'Microsoft.Web/sites@2022-03-01' = {
   name: 'frontend-app-${uniqueString(resourceGroup().id)}'
   location: resourceGroup().location
-  serverFarmId: frontendPlan.id
   tags: {
     'azd-service-name': 'frontend'
   }
-  siteConfig: {
-    linuxFxVersion: 'NODE|18-lts'
+  properties: {
+    serverFarmId: frontendPlan.id
+    siteConfig: {
+      linuxFxVersion: 'NODE|18-lts'
+    }
+    httpsOnly: true
   }
-  httpsOnly: true
 }
