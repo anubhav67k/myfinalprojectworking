@@ -45,7 +45,7 @@ resource frontendApp 'Microsoft.Web/sites@2022-03-01' = {
   properties: {
     serverFarmId: frontendPlan.id
     siteConfig: {
-      linuxFxVersion: 'NODE|18-lts'
+      linuxFxVersion: 'NODE|18'
     }
     httpsOnly: true
   }
